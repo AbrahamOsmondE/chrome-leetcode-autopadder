@@ -1,18 +1,39 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
-
-# Other files and folders
-.settings/
-
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# OS files
+.DS_Store
+# IDEA
+.vscode
+.idea
+# nodesjs
+node_modules
+.node_modules*
+dist/
+build/
+package-lock.json
+# npm
+.npmrc
+# aws cli
+./aws-sam
+.aws-sam/
+# CDK assets
+.cdk.staging
+cdk.out
+# postgres
+*.pgsql
+# projects
+secrets/
+env.json
+.env
+.env.deploy
+.make.env
+.integrationtest.env
+*.log
+*.out
+.*.out
+.npmrc
+# docker db files
+docker/dynamodb
+docker/dynamodb-local
+# test report files
+coverage
+report.json
+test-report.html

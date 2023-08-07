@@ -1,0 +1,22 @@
+{
+  "name": "chrome-leetcode-autopadder",
+  "version": "1.0.0",
+  "description": "Google Extension to help stat padding Github Greens through Leetcode",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack/webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/chrome": "^0.0.243",
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}

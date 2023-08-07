@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Leetcode Autopadder",
+  "version": "1.0",
+  "description": "Capture Leetcode solutions and problem detail when you submit the correct answer",
+
+  "icons": {
+    "16": "images/leetcode.png",
+    "32": "images/leetcode.png",
+    "48": "images/leetcode.png",
+    "128": "images/leetcode.png"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
+ ],
+ "host_permissions": ["https://leetcode.com/*"],
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": [
+        "https://developer.chrome.com/docs/extensions/*",
+        "https://developer.chrome.com/docs/webstore/*",
+        "https://leetcode.com/problems/*"
+      ],
+      "runAt": "document_idle"
+    }
+  ]
+}
