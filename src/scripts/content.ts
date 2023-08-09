@@ -13,6 +13,7 @@
 // limitations under the License.
 const values = new Map();
 const axios = require('axios');
+const LAMBDA_URL = ''
 
 const handleButtonClick = () => {
   const codeEditorElement = document.querySelector('[data-track-load="code_editor"]');
@@ -23,7 +24,17 @@ const handleButtonClick = () => {
     setTimeout(() => {
       const submissionResult = document.querySelector('[data-e2e-locator="submission-result"]') as HTMLElement;
       if (submissionResult.innerText === "Accepted") {
-        axios.post()
+        const req = {
+          "title": values.get('title'),
+          "code_answer": linesContentElement.innerText,
+          "readme": values.get('readme'),
+          "difficulty": values.get('difficulty'),
+        }
+        try {
+          axios.post(LAMBDA_URL, req)
+        } catch (e) {
+          console.log(e)
+        }
       }
 
     }, 5000)
@@ -38,15 +49,16 @@ setTimeout(() => {
   const difficulty = document.querySelector('.text-yellow, .text-pink, .text-olive') as HTMLElement;
   const problemTitle = elementsWithClass[1] as HTMLElement;
   const currentUrl = window.location.href;
-  
-  const descriptionFormatted = problemDescription.innerHTML.replace(/<p>&nbsp;<\/p>/g, "")
+  const formattedTitle = problemTitle.innerText.replace(/\./g, "").replace(/ /g, "-");
 
+  const descriptionFormatted = problemDescription.innerHTML.replace(/<p>&nbsp;<\/p>/g, "")
+  values.set( 'difficulty', difficulty.innerText)
+  values.set( 'title', formattedTitle)
   values.set('readme', '## [' + problemTitle.innerText + '](' + currentUrl + ')\n' + '## ' + difficulty.innerText + '\n' + descriptionFormatted)
 
 
   if (codeEditorElement) {
     const linesContentElement = codeEditorElement!.querySelector('.lines-content') as HTMLElement;
-    console.log(linesContentElement.innerText)
   }
   
   if (submitButton) {
